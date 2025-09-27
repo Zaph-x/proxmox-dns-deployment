@@ -21,7 +21,7 @@ install -m 644 /root/named.conf.log /etc/bind/named.conf.log
 
 # Ensure the logging file is included from named.conf
 if ! grep -q 'named.conf.log' /etc/bind/named.conf; then
-  sed -i '1s;^;include "/etc/bind/named.conf.log";\n;' /etc/bind/named.conf
+  sed -i '1i include "/etc/bind/named.conf.log";' /etc/bind/named.conf
 fi
 
 install -o bind -g bind -m 755 -d /etc/bind/zones

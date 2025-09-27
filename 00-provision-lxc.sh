@@ -3,7 +3,7 @@
 set -euo pipefail
 
 CTID="${CTID:-}"
-HOSTNAME="${HOSTNAME:-dns01}"
+LXC_HOSTNAME="${LXC_HOSTNAME:-dns01}"
 TEMPLATE_STORAGE="${TEMPLATE_STORAGE:-local}"
 VM_STORAGE="${VM_STORAGE:-local-lvm}"
 TEMPLATE="${TEMPLATE:-debian-12-standard_12.2-1_amd64.tar.zst}"  # Make sure it's downloaded
@@ -21,9 +21,9 @@ if [[ -z "$CTID" ]]; then
 fi
 
 if ! pct status "$CTID" &>/dev/null; then
-  echo "[+] Creating LXC $CTID ($HOSTNAME)"
+  echo "[+] Creating LXC $CTID ($LXC_HOSTNAME)"
   pct create "$CTID" "${TEMPLATE_STORAGE}:vztmpl/${TEMPLATE}" \
-    -hostname "$HOSTNAME" \
+    -hostname "$LXC_HOSTNAME" \
     -net0 name=eth0,bridge="$BRIDGE",ip="$IP_CIDR",gw="$GW_IP" \
     -storage "$VM_STORAGE" \
     -rootfs "${VM_STORAGE}:${DISK_GB}" \

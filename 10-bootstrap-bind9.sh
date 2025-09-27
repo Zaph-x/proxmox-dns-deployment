@@ -32,7 +32,7 @@ touch /etc/bind/named.conf.local
 
 named-checkconf /etc/bind/named.conf
 
-systemctl enable --now bind9
+systemctl enable --now named
 
 echo "[+] Bind9 is up. Try: add-zone example.lan <dns_server_ip> --reverse 192.168.100.0/24"
 

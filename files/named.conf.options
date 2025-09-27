@@ -1,0 +1,21 @@
+options {
+    directory "/var/cache/bind";
+    recursion yes;
+    allow-recursion { 127.0.0.1; 192.168.0.0/16; 10.0.0.0/8; 172.16.0.0/12; };
+    listen-on { any; };
+    listen-on-v6 { any; };
+    allow-query { any; };
+
+    dnssec-validation auto;
+
+    forwarders {
+        192.168.100.1
+    };
+
+    auth-nxdomain no;    # conform to RFC1035
+    minimal-responses yes;
+    rate-limit {
+        responses-per-second 20;
+    };
+};
+

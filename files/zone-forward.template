@@ -1,0 +1,18 @@
+$TTL 3600
+@   IN SOA ns1.%ZONE%. hostmaster.%ZONE%. (
+        %SERIAL% ; serial
+        3600     ; refresh
+        900      ; retry
+        1209600  ; expire
+        300 )    ; negative TTL
+;
+    IN NS ns1.%ZONE%.
+ns1 IN A  %NS_IPV4%
+; ns1 IN AAAA %NS_IPV6%
+@   IN A  %NS_IPV4%
+; @  IN AAAA %NS_IPV6%
+
+; Add your hosts below:
+; host1 IN A 192.168.1.10
+; host2 IN A 192.168.1.11
+

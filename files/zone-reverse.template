@@ -1,0 +1,13 @@
+$TTL 3600
+@   IN SOA ns1.%FQDN_ZONE%. hostmaster.%FQDN_ZONE%. (
+        %SERIAL%
+        3600
+        900
+        1209600
+        300 )
+;
+    IN NS ns1.%FQDN_ZONE%.
+
+; PTR records go below (last octet -> FQDN):
+; 10 IN PTR host1.%FQDN_ZONE%.
+

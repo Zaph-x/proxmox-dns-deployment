@@ -55,9 +55,9 @@ echo "[+] Running bootstrap inside the container"
 pct exec "$CTID" -- bash -lc "bash /root/10-bootstrap-bind9.sh"
 
 echo "[+] Copying zone tools into the container"
-pct push "$CTID" tools/add-zone.sh /usr/local/bin/add-zone
-pct push "$CTID" tools/delete-zone.sh /usr/local/bin/delete-zone
-pct push "$CTID" tools/list-zones.sh /usr/local/bin/list-zones
+pct push "$CTID" tools/add-zone.sh /usr/bin/add-zone
+pct push "$CTID" tools/delete-zone.sh /usr/bin/delete-zone
+pct push "$CTID" tools/list-zones.sh /usr/bin/list-zones
 pct exec "$CTID" -- chmod +x /usr/local/bin/{add-zone,delete-zone,list-zones}
 
 echo "[✓] Done. LXC $CTID ready. Use: pct exec $CTID -- add-zone example.lan 192.168.100.10 --reverse 192.168.100.0/24"
